@@ -10,7 +10,7 @@ function DeleteProduct() {
         e.preventDefault();
         const token = localStorage.getItem('token');
 
-        await fetch('http://localhost:5000/deleteProduct', {
+        await fetch('https://myapplebackend-production.up.railway.app/deleteProduct', {
             method: 'POST',
             headers: {
                 'Content-type': 'application/json',

@@ -14,7 +14,7 @@ function CheckOrders() {
                 navigate('/login');
             }
 
-            await fetch('http://localhost:5000/getOrders', {
+            await fetch('https://myapplebackend-production.up.railway.app/getOrders', {
                 method: 'GET',
                 headers: {
                     Authorization: `Bearer ${token}`

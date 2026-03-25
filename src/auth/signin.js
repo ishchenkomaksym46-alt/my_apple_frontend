@@ -9,7 +9,7 @@ function Signin() {
     function handleSubmit(e) {
         e.preventDefault();
 
-        fetch('http://localhost:5000/register', {
+        fetch('https://myapplebackend-production.up.railway.app/register', {
             method: 'POST',
             headers: { 'Content-type': 'application/json' },
             body: JSON.stringify({

@@ -17,7 +17,7 @@ function MainPage() {
             }
 
             try {
-                const res = await fetch('http://localhost:5000/mainPageCheck', {
+                const res = await fetch('https://myapplebackend-production.up.railway.app/mainPageCheck', {
                     headers: {
                         Authorization: `Bearer ${token}`
                     }
@@ -39,14 +39,14 @@ function MainPage() {
         };
 
         const getProducts = async () => {
-            await fetch('http://localhost:5000/getProducts')
+            await fetch('https://myapplebackend-production.up.railway.app/getProducts')
             .then(res => res.json())
             .then(result => setProducts(result));
         }
 
         const checkRole = async () => {
             const token = localStorage.getItem('token');
-            await fetch('http://localhost:5000/checkRole', {
+            await fetch('https://myapplebackend-production.up.railway.app/checkRole', {
                 headers: {
                     Authorization: `Bearer ${token}`
                 }
@@ -75,7 +75,7 @@ function MainPage() {
         }
 
         try {
-            const res = await fetch('http://localhost:5000/cart', {
+            const res = await fetch('https://myapplebackend-production.up.railway.app/cart', {
                 method: 'POST',
                 headers: {
                     'Content-type': 'application/json',

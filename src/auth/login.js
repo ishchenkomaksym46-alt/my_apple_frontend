@@ -13,7 +13,7 @@ function Login() {
         setError('');
 
         try {
-            const res = await fetch('http://localhost:5000/login', {
+            const res = await fetch('https://myapplebackend-production.up.railway.app/login', {
                 method: 'POST',
                 headers: { 'Content-type': 'application/json' },
                 body: JSON.stringify({

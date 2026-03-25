@@ -17,7 +17,7 @@ function Cart() {
             }
 
             try {
-                const res = await fetch('http://localhost:5000/cart', {
+                const res = await fetch('https://myapplebackend-production.up.railway.app/cart', {
                     headers: {
                         Authorization: `Bearer ${token}`
                     }
@@ -49,7 +49,7 @@ function Cart() {
         }
 
         try {
-            const res = await fetch(`http://localhost:5000/cart/${id}`, {
+            const res = await fetch(`https://myapplebackend-production.up.railway.app/cart/${id}`, {
                 method: 'DELETE',
                 headers: {
                     Authorization: `Bearer ${token}`
@@ -105,7 +105,7 @@ function Cart() {
         try {
             setIsSubmitting(true);
 
-            const res = await fetch('http://localhost:5000/order/cart', {
+            const res = await fetch('https://myapplebackend-production.up.railway.app/order/cart', {
                 method: 'POST',
                 headers: {
                     Authorization: `Bearer ${token}`

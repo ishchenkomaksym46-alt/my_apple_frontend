@@ -16,7 +16,7 @@ function AdminRoute({ children }) {
             }
 
             try {
-                const res = await fetch('http://localhost:5000/checkRole', {
+                const res = await fetch('https://myapplebackend-production.up.railway.app/checkRole', {
                     headers: {
                         Authorization: `Bearer ${token}`
                     }

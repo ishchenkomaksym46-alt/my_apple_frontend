@@ -15,7 +15,7 @@ function Pay() {
             return;
         }
 
-        await fetch(`http://localhost:5000/order/${id}`, {
+        await fetch(`https://myapplebackend-production.up.railway.app/order/${id}`, {
             method: 'GET',
             headers: {
                 Authorization: `Bearer ${token}`

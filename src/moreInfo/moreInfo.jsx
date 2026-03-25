@@ -9,7 +9,7 @@ function MoreInfo() {
 
     useEffect(() => {
         const getProductData = async () => {
-            const res = await fetch(`http://localhost:5000/moreInfo/${id}`);
+            const res = await fetch(`https://myapplebackend-production.up.railway.app/moreInfo/${id}`);
             const data = await res.json();
             setProductInfo(data.data);
         }

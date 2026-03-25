@@ -13,7 +13,7 @@ function AddProduct() {
         e.preventDefault();
         const token = localStorage.getItem('token');
 
-        await fetch('http://localhost:5000/createProduct', {
+        await fetch('https://myapplebackend-production.up.railway.app/createProduct', {
             method: 'POST',
             headers: {
                 'Content-type': 'application/json',
