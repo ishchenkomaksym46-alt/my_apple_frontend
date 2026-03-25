@@ -1,0 +1,364 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&family=Montserrat:ital,wght@0,600;1,600&display=swap');
+
+* {
+    margin: 0;
+    font-family: "Inter", sans-serif;
+    box-sizing: border-box;
+}
+
+body {
+    background: #f6f7f9;
+    color: #333;
+}
+
+.headerWrapper {
+    position: sticky;                                                                                                                  
+    top: 0;                                                                                                                            
+    background: white;
+    z-index: 100; 
+}
+
+header {
+    display: flex;                                                                                                                     
+    flex-direction: row;                                                                                                               
+    gap: 10px;                                                                                                                         
+    padding: 10px;                                                                                                                     
+    margin: 0;
+    text-align: left;
+}
+
+a {
+    position: relative;
+    text-decoration: none; 
+    transition: background-color 0.5s ease;
+    color: #a7a7a7;
+    margin: auto;
+    
+    &:hover {
+        background-color: gainsboro;
+        border-radius: 5px;
+    }
+}
+
+hr {
+    margin: 0;
+}
+
+.logo {
+    color: #333;
+    font-weight: 600;
+    margin: 10px;
+    font-size: 1.5rem;
+}
+
+.logoImage {
+    margin-top: 5px;
+    margin-left: 5px;
+}
+
+.products {
+    margin: 20px;                                                                                                                      
+    text-align: center;                                                                                                                
+    border: 1px solid #ddd;
+    border-radius: 12px;                                                                                                               
+    padding: 16px;                                                                                                                     
+    display: flex;                                                                                                                     
+    flex-direction: column;                                                                                                            
+    align-items: center;  
+}
+
+img {
+    border-radius: 5px;
+}
+
+.productsGrid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+    gap: 3px;
+    padding: 20px;
+}
+
+.productImage {
+    width: 100%;
+    max-width: 220px;
+    height: 220px;
+    object-fit: contain;
+    display: block;
+}
+
+form {
+    width: min(100% - 32px, 460px);
+    margin: 72px auto;
+    padding: 28px;
+    border: 1px solid #ddd;
+    border-radius: 16px;
+    background: white;
+    display: flex;
+    flex-direction: column;
+    gap: 14px;
+    box-shadow: 0 18px 45px rgba(15, 23, 42, 0.08);
+}
+
+input {
+    width: 100%;
+    padding: 14px 16px;
+    border: 1px solid #d6d6d6;
+    border-radius: 12px;
+    background: #fbfbfb;
+    color: #333;
+    font-size: 1rem;
+    transition: border-color 0.2s ease, box-shadow 0.2s ease, background-color 0.2s ease;
+}
+
+input:focus {
+    outline: none;
+    border-color: #6b7280;
+    background: white;
+    box-shadow: 0 0 0 4px rgba(107, 114, 128, 0.12);
+}
+
+button {
+    border: 1px solid #d1d5db;
+    border-radius: 12px;
+    padding: 12px 16px;
+    background: #333;
+    color: white;
+    font-size: 1rem;
+    font-weight: 600;
+    cursor: pointer;
+    transition: transform 0.2s ease, box-shadow 0.2s ease, background-color 0.2s ease;
+}
+
+button:hover {
+    background: #1f1f1f;
+    box-shadow: 0 12px 24px rgba(31, 31, 31, 0.18);
+    transform: translateY(-1px);
+}
+
+button:active {
+    transform: translateY(0);
+    box-shadow: none;
+}
+
+form p {
+    min-height: 24px;
+    color: #c2410c;
+    font-size: 0.95rem;
+}
+
+.pageShell {
+    width: min(100% - 32px, 1180px);
+    margin: 0 auto;
+    padding: 32px 0 56px;
+}
+
+.pageHeader {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 16px;
+    margin-bottom: 24px;
+}
+
+.sectionTitle {
+    color: #333;
+    font-size: clamp(1.8rem, 3vw, 2.4rem);
+    font-weight: 700;
+}
+
+.secondaryButton {
+    background: white;
+    color: #333;
+}
+
+.secondaryButton:hover {
+    background: #ececec;
+}
+
+.statusMessage {
+    min-height: 24px;
+    margin-bottom: 18px;
+    color: #c2410c;
+    font-size: 0.95rem;
+}
+
+.emptyState {
+    border: 1px solid #ddd;
+    border-radius: 16px;
+    background: white;
+    padding: 36px 28px;
+    text-align: center;
+    box-shadow: 0 18px 45px rgba(15, 23, 42, 0.06);
+}
+
+.cardsGrid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+    gap: 18px;
+}
+
+.infoCard {
+    border: 1px solid #ddd;
+    border-radius: 16px;
+    background: white;
+    padding: 20px;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    box-shadow: 0 18px 45px rgba(15, 23, 42, 0.06);
+}
+
+.infoCard h1,
+.infoCard h2,
+.infoCard h3 {
+    margin: 0;
+    color: #333;
+}
+
+.infoCard h1 {
+    font-size: 1.2rem;
+}
+
+.infoCard h2 {
+    font-size: 1rem;
+}
+
+.infoMeta {
+    color: #6b7280;
+    line-height: 1.5;
+}
+
+.cardActions {
+    margin-top: auto;
+    padding-top: 8px;
+}
+
+.summaryCard {
+    margin-top: 22px;
+    border: 1px solid #ddd;
+    border-radius: 16px;
+    background: white;
+    padding: 22px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 16px;
+    box-shadow: 0 18px 45px rgba(15, 23, 42, 0.06);
+}
+
+.summaryCard h3 {
+    margin: 0;
+    font-size: 1.2rem;
+}
+
+.detailsLayout {
+    display: grid;
+    grid-template-columns: minmax(300px, 430px) minmax(0, 1fr);
+    gap: 24px;
+    align-items: start;
+}
+
+.detailsImageCard,
+.detailsContentCard {
+    border: 1px solid #ddd;
+    border-radius: 20px;
+    background: white;
+    box-shadow: 0 18px 45px rgba(15, 23, 42, 0.06);
+}
+
+.detailsImageCard {
+    padding: 24px;
+}
+
+.detailsContentCard {
+    padding: 28px;
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+}
+
+.detailsImage {
+    width: 100%;
+    max-width: 100%;
+    height: 380px;
+    object-fit: contain;
+    display: block;
+}
+
+.detailsBadge {
+    width: fit-content;
+    padding: 8px 12px;
+    border-radius: 999px;
+    background: #f1f5f9;
+    color: #475569;
+    font-size: 0.9rem;
+    font-weight: 600;
+}
+
+.detailsTitle {
+    font-size: clamp(2rem, 4vw, 2.8rem);
+    line-height: 1.05;
+    color: #333;
+}
+
+.detailsDescription {
+    color: #4b5563;
+    font-size: 1.05rem;
+    line-height: 1.7;
+}
+
+.detailsMetaGrid {
+    display: grid;
+    gap: 14px;
+}
+
+.detailsMetaItem {
+    padding: 16px 18px;
+    border: 1px solid #e5e7eb;
+    border-radius: 14px;
+    background: #fafafa;
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+}
+
+.detailsMetaLabel {
+    color: #6b7280;
+    font-size: 0.9rem;
+    font-weight: 600;
+}
+
+.detailsMetaValue {
+    color: #111827;
+    font-size: 1rem;
+    line-height: 1.5;
+    word-break: break-word;
+}
+
+.detailsLinkValue {
+    color: #374151;
+    font-size: 0.95rem;
+}
+
+button:disabled {
+    opacity: 0.65;
+    cursor: not-allowed;
+    transform: none;
+    box-shadow: none;
+}
+
+@media (max-width: 700px) {
+    .pageHeader,
+    .summaryCard {
+        flex-direction: column;
+        align-items: stretch;
+    }
+
+    .detailsLayout {
+        grid-template-columns: 1fr;
+    }
+
+    .detailsImage {
+        height: 280px;
+    }
+}
