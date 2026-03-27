@@ -7,12 +7,25 @@ function MainPage() {
     const [error, setError] = useState('');
     const [isAdmin, setIsAdmin] = useState(false);
     const [sortBy, setSortBy] = useState('id_desc');
+    const [search, setSearch] = useState('');
     const navigate = useNavigate();
 
     const getProducts = async (sort) => {
         await fetch(`https://myapplebackend-production.up.railway.app/getProducts?sort=${sort}`)
         .then(res => res.json())
         .then(result => setProducts(result));
+    }
+
+    const searchProduct = async () => {
+        await fetch(`https://myapplebackend-production.up.railway.app/getProductsSearch?search=${search}`)
+        .then(res => res.json())
+        .then(data => {
+            if(data.succes === false) {
+                setError('Cannot find product with this name!');
+            } else {
+                setProducts(data.result);
+            }
+        });
     }
 
     useEffect(() => {
@@ -171,6 +184,16 @@ function MainPage() {
                             <span className="sortText">The newest</span>
                         </label>
                         </div>
+                    </div>
+                    <div className="searchSection">
+                        <h2>Search</h2>
+                        <input placeholder="Search product: " onChange={(e) => setSearch(e.target.value)}/>
+                        <button onClick={() => {
+                            if(search.trim().length === 0) {
+                                return setError('Enter product name you want to find!');
+                            }
+                            searchProduct();
+                        }} />
                     </div>
                 </aside>
 

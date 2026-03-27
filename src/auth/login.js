@@ -39,6 +39,7 @@ function Login() {
 
     return(
         <form onSubmit={handleSubmit}>
+            <h2>Log In</h2>
             <input type="email" placeholder="Your email: " onChange={(e) => setEmail(e.target.value)} required/>
             <input type="password" placeholder="Your password: " onChange={(e) => setPassword(e.target.value)} required/>
             <button>Log In</button>
