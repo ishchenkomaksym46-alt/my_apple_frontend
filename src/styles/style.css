@@ -162,6 +162,58 @@ form input:focus {
     width: 100%;
 }
 
+.searchSection {
+    width: 100%;
+    padding: 16px;
+    border: 1px solid #e5e7eb;
+    border-radius: 16px;
+    background: linear-gradient(180deg, #fbfdff 0%, #f3f6f9 100%);
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+}
+
+.searchSectionHeader {
+    display: flex;
+    flex-direction: column;
+    gap: 6px;
+}
+
+.searchTitle {
+    font-size: 1rem;
+    font-weight: 700;
+    color: #111827;
+}
+
+.searchHint {
+    color: #6b7280;
+    font-size: 0.92rem;
+    line-height: 1.5;
+}
+
+.searchInput {
+    width: 100%;
+    padding: 12px 14px;
+    border: 1px solid #d1d5db;
+    border-radius: 12px;
+    background: rgba(255, 255, 255, 0.95);
+    color: #1f2937;
+    font-size: 0.98rem;
+    transition: border-color 0.2s ease, box-shadow 0.2s ease, background-color 0.2s ease;
+}
+
+.searchInput:focus {
+    outline: none;
+    border-color: #9ca3af;
+    background: #ffffff;
+    box-shadow: 0 0 0 4px rgba(148, 163, 184, 0.16);
+}
+
+.searchButton {
+    width: 100%;
+    justify-content: center;
+}
+
 .filterSectionTitle {
     font-size: 0.95rem;
     font-weight: 700;

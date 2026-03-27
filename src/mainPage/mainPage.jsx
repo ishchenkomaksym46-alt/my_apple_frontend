@@ -24,6 +24,7 @@ function MainPage() {
                 setError('Cannot find product with this name!');
             } else {
                 setProducts(data.result);
+                setError('');
             }
         });
     }
@@ -185,15 +186,23 @@ function MainPage() {
                         </label>
                         </div>
                     </div>
+                    <div className="filterDivider"></div>
                     <div className="searchSection">
-                        <h2>Search</h2>
-                        <input placeholder="Search product: " onChange={(e) => setSearch(e.target.value)}/>
-                        <button onClick={() => {
+                        <div className="searchSectionHeader">
+                            <h2 className="searchTitle">Search</h2>
+                            <p className="searchHint">Find a product by name in a few letters.</p>
+                        </div>
+                        <input
+                            className="searchInput"
+                            placeholder="Search product"
+                            onChange={(e) => setSearch(e.target.value)}
+                        />
+                        <button className="searchButton" onClick={() => {
                             if(search.trim().length === 0) {
                                 return setError('Enter product name you want to find!');
                             }
                             searchProduct();
-                        }} />
+                        }}>Search</button>
                     </div>
                 </aside>
 
