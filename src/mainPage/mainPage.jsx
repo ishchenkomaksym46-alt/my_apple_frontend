@@ -121,34 +121,74 @@ function MainPage() {
                 <hr/>
             </div>
 
-            <div className="container">
-                <h3>Sort by</h3>
-                <input type="radio" name="filter" value="The cheapest" className="filters" checked={sortBy === 'price_asc'} onChange={(e) => {
-                    setSortBy('price_asc');
-                }}/>The cheapest
-                <input type="radio" name="filter" value="The most expensive" className="filters" checked={sortBy === 'price_desc'} onChange={(e) => {
-                    setSortBy('price_desc');
-                }}/>The most expensive
-                <input type="radio" name="filter" value="The oldest" className="filters" checked={sortBy === 'id_asc'} onChange={(e) => {
-                    setSortBy('id_asc');
-                }}/>The oldest
-                <input type="radio" name="filter" value="The newest" className="filters" checked={sortBy === 'id_desc'} onChange={(e) => {
-                    setSortBy('id_desc');
-                }}/>The newest
-            </div>
-
-            {error && <p>{error}</p>}
-            <div className="productsGrid">
-                {products.map(el => (
-                    <div key={el.id} className="products">
-                        <img src={el.img} alt="product" className="productImage" loading="lazy"></img>
-                        <h2>{el.name}</h2>
-                        <h3>Price: {el.price}</h3>
-                        <button onClick={() => addToCart(el)}>Add to cart</button>
-                        <button onClick={() => navigate(`/pay/${el.id}`)}>Buy right now</button>
-                        <button onClick={() => navigate(`/moreInfo/${el.id}`)}>More information</button>
+            <div className="catalogLayout">
+                <aside className="container">
+                    <div className="filterHeader">
+                        <h2 className="filterTitle">Filters</h2>
                     </div>
-                ))}
+                    <div className="filterDivider"></div>
+                    <div className="filterSection">
+                        <h3 className="filterSectionTitle">Sort by</h3>
+                        <div className="sortOptions">
+                        <label className={`sortOption ${sortBy === 'price_asc' ? 'isActive' : ''}`}>
+                            <input
+                                type="radio"
+                                name="filter"
+                                className="filters"
+                                checked={sortBy === 'price_asc'}
+                                onChange={() => setSortBy('price_asc')}
+                            />
+                            <span className="sortText">The cheapest</span>
+                        </label>
+                        <label className={`sortOption ${sortBy === 'price_desc' ? 'isActive' : ''}`}>
+                            <input
+                                type="radio"
+                                name="filter"
+                                className="filters"
+                                checked={sortBy === 'price_desc'}
+                                onChange={() => setSortBy('price_desc')}
+                            />
+                            <span className="sortText">The most expensive</span>
+                        </label>
+                        <label className={`sortOption ${sortBy === 'id_asc' ? 'isActive' : ''}`}>
+                            <input
+                                type="radio"
+                                name="filter"
+                                className="filters"
+                                checked={sortBy === 'id_asc'}
+                                onChange={() => setSortBy('id_asc')}
+                            />
+                            <span className="sortText">The oldest</span>
+                        </label>
+                        <label className={`sortOption ${sortBy === 'id_desc' ? 'isActive' : ''}`}>
+                            <input
+                                type="radio"
+                                name="filter"
+                                className="filters"
+                                checked={sortBy === 'id_desc'}
+                                onChange={() => setSortBy('id_desc')}
+                            />
+                            <span className="sortText">The newest</span>
+                        </label>
+                        </div>
+                    </div>
+                </aside>
+
+                <section className="catalogContent">
+                    {error && <p>{error}</p>}
+                    <div className="productsGrid">
+                        {products.map(el => (
+                            <div key={el.id} className="products">
+                                <img src={el.img} alt="product" className="productImage" loading="lazy"></img>
+                                <h2>{el.name}</h2>
+                                <h3>Price: {el.price}</h3>
+                                <button onClick={() => addToCart(el)}>Add to cart</button>
+                                <button onClick={() => navigate(`/pay/${el.id}`)}>Buy right now</button>
+                                <button onClick={() => navigate(`/moreInfo/${el.id}`)}>More information</button>
+                            </div>
+                        ))}
+                    </div>
+                </section>
             </div>
         </div>
     )
