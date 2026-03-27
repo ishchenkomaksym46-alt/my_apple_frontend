@@ -6,7 +6,14 @@ function MainPage() {
     const [products, setProducts] = useState([]);
     const [error, setError] = useState('');
     const [isAdmin, setIsAdmin] = useState(false);
+    const [sortBy, setSortBy] = useState('id_desc');
     const navigate = useNavigate();
+
+    const getProducts = async (sort) => {
+        await fetch(`https://myapplebackend-production.up.railway.app/getProducts?sort=${sort}`)
+        .then(res => res.json())
+        .then(result => setProducts(result));
+    }
 
     useEffect(() => {
         const loginCheck = async () => {
@@ -38,12 +45,6 @@ function MainPage() {
             }
         };
 
-        const getProducts = async () => {
-            await fetch('https://myapplebackend-production.up.railway.app/getProducts')
-            .then(res => res.json())
-            .then(result => setProducts(result));
-        }
-
         const checkRole = async () => {
             const token = localStorage.getItem('token');
             await fetch('https://myapplebackend-production.up.railway.app/checkRole', {
@@ -63,8 +64,11 @@ function MainPage() {
 
         checkRole();
         loginCheck();
-        getProducts();
     }, [navigate]);
+
+    useEffect(() => {
+        getProducts(sortBy);
+    }, [sortBy])
 
     const addToCart = async (product) => {
         const token = localStorage.getItem('token');
@@ -116,11 +120,28 @@ function MainPage() {
                 </header>
                 <hr/>
             </div>
+
+            <div className="container">
+                <h3>Sort by</h3>
+                <input type="radio" name="filter" value="The cheapest" className="filters" checked={sortBy === 'price_asc'} onChange={(e) => {
+                    setSortBy('price_asc');
+                }}/>The cheapest
+                <input type="radio" name="filter" value="The most expensive" className="filters" checked={sortBy === 'price_desc'} onChange={(e) => {
+                    setSortBy('price_desc');
+                }}/>The most expensive
+                <input type="radio" name="filter" value="The oldest" className="filters" checked={sortBy === 'id_asc'} onChange={(e) => {
+                    setSortBy('id_asc');
+                }}/>The oldest
+                <input type="radio" name="filter" value="The newest" className="filters" checked={sortBy === 'id_desc'} onChange={(e) => {
+                    setSortBy('id_desc');
+                }}/>The newest
+            </div>
+
             {error && <p>{error}</p>}
             <div className="productsGrid">
                 {products.map(el => (
                     <div key={el.id} className="products">
-                        <img src={el.img} alt="product" className="productImage"></img>
+                        <img src={el.img} alt="product" className="productImage" loading="lazy"></img>
                         <h2>{el.name}</h2>
                         <h3>Price: {el.price}</h3>
                         <button onClick={() => addToCart(el)}>Add to cart</button>
