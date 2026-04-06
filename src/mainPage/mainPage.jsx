@@ -8,10 +8,11 @@ function MainPage() {
     const [isAdmin, setIsAdmin] = useState(false);
     const [sortBy, setSortBy] = useState('id_desc');
     const [search, setSearch] = useState('');
+    const [page, setPage] = useState(1);
     const navigate = useNavigate();
 
     const getProducts = async (sort) => {
-        await fetch(`https://myapplebackend-production.up.railway.app/getProducts?sort=${sort}`)
+        await fetch(`https://myapplebackend-production.up.railway.app/getProducts?sort=${sort}&page=${page}`)
         .then(res => res.json())
         .then(result => setProducts(result));
     }
@@ -220,6 +221,11 @@ function MainPage() {
                             </div>
                         ))}
                     </div>
+                </section>
+
+                <section className="paginationButtons">
+                    <button className="next" onClick={() => setPage(page + 1)}>Next</button>
+                    <button className="back" onClick={() => setPage(page - 1)}>Back</button>
                 </section>
             </div>
         </div>
