@@ -9,24 +9,24 @@ function MainPage() {
     const [sortBy, setSortBy] = useState('id_desc');
     const [search, setSearch] = useState('');
     const [page, setPage] = useState(1);
-    const [totalPages, setTotalPages] = useState(1);
     const navigate = useNavigate();
 
     const getProducts = useCallback(async (sort) => {
-        await fetch(`https://myapplebackend-production.up.railway.app/getProducts?sort=${sort}&page=${page}`)
-        .then(res => res.json())
-        .then(result => {
-            setProducts(result);
-            // Предполагаем 10 продуктов на странице
-            setTotalPages(Math.ceil(result.length > 0 ? result.length / 10 : 1));
-        });
+        const res = await fetch(`https://myapplebackend-production.up.railway.app/getProducts?sort=${sort}&page=${page}`)
+        const products = res.json();
+
+        if(products.success === false) {
+            setError(products.message);
+        } else {
+            setProducts(products);
+        }
     }, [page]);
 
     const searchProduct = async () => {
         await fetch(`https://myapplebackend-production.up.railway.app/getProductsSearch?search=${search}`)
         .then(res => res.json())
         .then(data => {
-            if(data.succes === false) {
+            if(data.success === false) {
                 setError('Cannot find product with this name!');
             } else {
                 setProducts(data.result);
@@ -229,9 +229,8 @@ function MainPage() {
                 </section>
 
                 <section className="paginationButtons">
-                    <button className="back" onClick={() => setPage(page - 1)} disabled={page <= 1}>Back</button>
-                    <span>Page {page}</span>
-                    <button className="next" onClick={() => setPage(page + 1)} disabled={products.length < 10}>Next</button>
+                    <button className="next" onClick={() => setPage(page + 1)}>Next</button>
+                    <button className="back" onClick={() => setPage(page - 1)}>Back</button>
                 </section>
             </div>
         </div>
