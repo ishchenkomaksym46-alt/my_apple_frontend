@@ -13,7 +13,7 @@ function MainPage() {
 
     const getProducts = useCallback(async (sort) => {
         const res = await fetch(`https://myapplebackend-production.up.railway.app/getProducts?sort=${sort}&page=${page}`)
-        const products = res.json();
+        const products = await res.json();
 
         if(products.success === false) {
             setError(products.message);
