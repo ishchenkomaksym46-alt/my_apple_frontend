@@ -9,12 +9,17 @@ function MainPage() {
     const [sortBy, setSortBy] = useState('id_desc');
     const [search, setSearch] = useState('');
     const [page, setPage] = useState(1);
+    const [totalPages, setTotalPages] = useState(1);
     const navigate = useNavigate();
 
     const getProducts = useCallback(async (sort) => {
         await fetch(`https://myapplebackend-production.up.railway.app/getProducts?sort=${sort}&page=${page}`)
         .then(res => res.json())
-        .then(result => setProducts(result));
+        .then(result => {
+            setProducts(result);
+            // Предполагаем 10 продуктов на странице
+            setTotalPages(Math.ceil(result.length > 0 ? result.length / 10 : 1));
+        });
     }, [page]);
 
     const searchProduct = async () => {
@@ -224,8 +229,9 @@ function MainPage() {
                 </section>
 
                 <section className="paginationButtons">
-                    <button className="next" onClick={() => setPage(page + 1)}>Next</button>
-                    <button className="back" onClick={() => setPage(page - 1)}>Back</button>
+                    <button className="back" onClick={() => setPage(page - 1)} disabled={page <= 1}>Back</button>
+                    <span>Page {page}</span>
+                    <button className="next" onClick={() => setPage(page + 1)} disabled={products.length < 10}>Next</button>
                 </section>
             </div>
         </div>
