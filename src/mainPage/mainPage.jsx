@@ -1,4 +1,4 @@
-import { useEffect, useState } from "react";
+import { useEffect, useState, useCallback } from "react";
 import { useNavigate } from "react-router-dom";
 import logo from './Image.svg';
 
@@ -11,11 +11,11 @@ function MainPage() {
     const [page, setPage] = useState(1);
     const navigate = useNavigate();
 
-    const getProducts = async (sort) => {
+    const getProducts = useCallback(async (sort) => {
         await fetch(`https://myapplebackend-production.up.railway.app/getProducts?sort=${sort}&page=${page}`)
         .then(res => res.json())
         .then(result => setProducts(result));
-    }
+    }, [page]);
 
     const searchProduct = async () => {
         await fetch(`https://myapplebackend-production.up.railway.app/getProductsSearch?search=${search}`)
