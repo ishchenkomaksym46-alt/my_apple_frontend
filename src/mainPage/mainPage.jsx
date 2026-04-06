@@ -83,7 +83,7 @@ function MainPage() {
 
     useEffect(() => {
         getProducts(sortBy);
-    }, [sortBy])
+    }, [sortBy, getProducts])
 
     const addToCart = async (product) => {
         const token = localStorage.getItem('token');
