@@ -17,6 +17,7 @@ function MainPage() {
 
         if(products.success === false) {
             setError(products.message);
+            setPage(1);
         } else {
             setProducts(products);
         }
